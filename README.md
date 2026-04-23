@@ -1,165 +1,75 @@
+# Mini Cloud Log Analyzer
 
-# Práctica 1
-
-## Implementación de un Mini Cloud Log Analyzer en ARM64
-
-**Modalidad:** Individual
-**Entorno de trabajo:** AWS Ubuntu ARM64 + GitHub Classroom
-**Lenguaje:** ARM64 Assembly (GNU Assembler) + Bash + GNU Make
+Práctica 4.2 — ARM64 Assembly
 
 ---
 
-## Introducción
+## Alumno
 
-Los sistemas modernos de cómputo en la nube generan continuamente registros (*logs*) que permiten monitorear el estado de servicios, detectar fallas y activar alertas ante eventos críticos.
+DIEGO ALEJANDRO ORENDAIN CAMACHO
 
-En esta práctica se desarrollará un módulo simplificado de análisis de logs, implementado en **ARM64 Assembly**, inspirado en tareas reales de monitoreo utilizadas en sistemas cloud, observabilidad y administración de infraestructura.
+## Institución
 
-El programa procesará códigos de estado HTTP suministrados mediante entrada estándar (stdin):
+Instituto Tecnológico de Tijuana
 
-```bash id="y1gcmc"
-cat logs.txt | ./analyzer
-```
+## Materia
 
----
+Lenguaje de Interfaz
 
-## Objetivo general
+## Fecha
 
-Diseñar e implementar, en lenguaje ensamblador ARM64, una solución para procesar registros de eventos y detectar condiciones definidas según la variante asignada.
+23 de Abril del 2026
 
 ---
 
-## Objetivos específicos
+## Descripción
 
-El estudiante aplicará:
-
-* programación en ARM64 bajo Linux
-* manejo de registros
-* direccionamiento y acceso a memoria
-* instrucciones de comparación
-* estructuras iterativas en ensamblador
-* saltos condicionales
-* uso de syscalls Linux
-* compilación con GNU Make
-* control de versiones con GitHub Classroom
-
-Estos temas se alinean con contenidos clásicos de flujo de control, herramientas GNU, manejo de datos y convenciones de programación en ensamblador.   
+Este proyecto consiste en el desarrollo de un analizador de logs estilo cloud, implementado completamente en lenguaje ensamblador ARM64. El programa procesa códigos de estado HTTP desde la entrada estándar y determina el código más frecuente.
 
 ---
 
-## Material proporcionado
+## Tecnologías utilizadas
 
-Se entregará un repositorio preconfigurado que contiene:
-
-* plantilla base en ARM64
-* archivo `Makefile`
-* script Bash de ejecución
-* archivo de datos (`logs.txt`)
-* pruebas iniciales
-* secciones marcadas con `TODO`
-
-El estudiante deberá completar la lógica correspondiente.
-
----
-
-## Variantes de la práctica
-
-### Variante A
-
-Contabilizar:
-
-* respuestas exitosas (2xx)
-* errores del cliente (4xx)
-* errores del servidor (5xx)
-
----
-
-### Variante B
-
-Determinar el código de estado más frecuente.
-
----
-
-### Variante C
-
-Detectar el primer evento crítico (503).
-
----
-
-### Variante D
-
-Detectar tres errores consecutivos.
-
----
-
-### Variante E
-
-Calcular índice de salud:
-
-```text id="2u4vvx"
-Health Score = 100 - (errores × 10)
-```
-
----
-
-## Compilación
-
-```bash id="bmubtb"
-make
-```
+* ARM64 Assembly (GNU Assembler)
+* GNU Make
+* Bash
+* Linux (AWS EC2 ARM64)
 
 ---
 
 ## Ejecución
 
-```bash id="gcqlf2"
-cat logs.txt | ./analyzer
+```bash
+make
+cat data/logs_B.txt | ./analyzer
 ```
 
 ---
 
-## Entregables
+## Resultado esperado
 
-Cada estudiante deberá entregar en su repositorio:
+El programa imprime el código HTTP más frecuente:
 
-* archivo fuente ARM64 funcional
-* solución implementada
-* README explicando diseño y lógica utilizada
-* evidencia de ejecución
-* commits realizados en GitHub Classroom
+```bash
+200
+```
 
 ---
 
-## Criterios de evaluación
+## Estructura del proyecto
 
-| Criterio                    | Ponderación |
-| --------------------------- | ----------- |
-| Compilación correcta        | 20%         |
-| Correctitud de la solución  | 35%         |
-| Uso adecuado de ARM64       | 25%         |
-| Documentación y comentarios | 10%         |
-| Evidencia de pruebas        | 10%         |
-
----
-
-## Restricciones
-
-No está permitido:
-
-* resolver la lógica en C
-* resolver la lógica en Python
-* modificar la variante asignada
-* omitir el uso de ARM64 Assembly
+```
+cloud-log-analyzer/
+├── analyzer.s
+├── Makefile
+├── data/
+│   └── logs_B.txt
+├── tests/
+└── run.sh
+```
 
 ---
 
-## Competencia a desarrollar
+## Objetivo
 
-Comprender cómo un problema de procesamiento de datos es implementado a nivel máquina mediante instrucciones ARM64.
-
----
-
-## Nota
-
-Aunque este problema puede resolverse fácilmente en lenguajes de alto nivel, el propósito de la práctica es implementar **cómo lo resolvería la arquitectura**, no únicamente obtener el resultado.
-
+Comprender cómo un problema de procesamiento de datos puede ser implementado a bajo nivel utilizando instrucciones ARM64, incluyendo el manejo de memoria, control de flujo y uso de syscalls en Linux.
